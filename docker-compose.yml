@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  frontend_lab6:
+    image: nginx:1.23-alpine
+    container_name: frontend_lab6
+    ports:
+      - "8085:80"
+    volumes:
+      - ./site:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - backend_lab6
+    networks:
+      - lab6_network
+
+  backend_lab6:
+    image: php:7.4-fpm
+    container_name: backend_lab6
+    volumes:
+      - ./site:/var/www/html
+    networks:
+      - lab6_network
+
+  database_lab6:
+    image: mariadb:10.5
+    container_name: database_lab6
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: testdb
+    volumes:
+      - ./db_data:/var/lib/mysql
+    networks:
+      - lab6_network
+
+networks:
+  lab6_network:
+    driver: bridge
