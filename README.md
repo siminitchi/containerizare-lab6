@@ -125,7 +125,8 @@ docker compose down
 ```
 
 ### 4.6 Capturi de ecran
-(se vor adauga manual)
+<img width="596" height="175" alt="image" src="https://github.com/user-attachments/assets/a6dc9f59-64f6-4b67-8cd5-d18f28d13f74" />
+
 - Lista containerelor (`docker ps`)
 - Browser: `http://localhost:8080`
 
